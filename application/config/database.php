@@ -52,7 +52,9 @@ $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '123';
 $db['default']['database'] = 'jcastro_ci2';
-$db['default']['dbdriver'] = 'mysql';
+// mysql esta obsoleto hay que usar mysqli
+// $db['default']['dbdriver'] = 'mysql';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -63,6 +65,8 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
+// $db['default']['port'] = '3306';
 
 
 /* End of file database.php */
