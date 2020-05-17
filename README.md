@@ -15,7 +15,7 @@ _Server apache, php 5.1.6 >=, mysql_
 
 ## Autor ✒️
 
-* **Jonathan Castro** - *Desarrollo Fullstack* - [)
+* **Jonathan Castro** - *Desarrollo Fullstack*
 
 
 
