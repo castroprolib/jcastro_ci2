@@ -35,8 +35,23 @@ class Person extends CI_Controller {
 
 	public function create()
 	{
-		
-		print_r($_POST);
+		// echo json_encode($_POST);
+
+		$date = date('Y-m-d');
+
+		$data = array(
+			'first_name' => $_POST['first_name'],
+			'last_name' => $_POST['last_name'],
+			'sex' => $_POST['sex'],
+			'country_id' => $_POST['country_id'],
+			'created_at' => $date,
+			'updated_at' => $date
+			 );
+
+		$query = $this->db->insert('jcastro_ci2.persons', $data);
+
+
+		echo json_encode($query);
 	}
 
 

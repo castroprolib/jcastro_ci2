@@ -88,12 +88,20 @@
 
 		// alert(base_url);
 
-		const country_id = $('#country_id');
+		// los selectores
+		const first_name = $('#first_name');
+
+		const last_name = $('#last_name');
 
 		const sex = $('#sex');
 
+		const country_id = $('#country_id');
+
+		
+		
 
 
+		// cargar paises con ajax
 		$.ajax({
 			url: base_url + 'person/getCountrys'			
 		})
@@ -114,8 +122,6 @@
 
 			});
 
-
-
 		})
 		.fail(function() {
 			// console.log("error");
@@ -125,6 +131,7 @@
 		});
 
 
+		// cargar sexo con ajax
 		$.ajax({
 			url: base_url + 'person/getSex'			
 		})
@@ -135,7 +142,7 @@
 
 			resp_sex = JSON.parse(response);
 
-			console.log(resp_sex);
+			// console.log(resp_sex);
 
 			$.each(resp_sex, function(index, val) {
 
@@ -144,8 +151,6 @@
 				// console.log(index);
 
 			});
-
-
 
 		})
 		.fail(function() {
@@ -176,6 +181,28 @@
 
 		form.submit(function(event) {
 			event.preventDefault();
+
+			//obtenemos los valores por el selector id
+			fName = first_name.val();
+			lName = last_name.val();
+			dSex = sex.val();
+			dCoun = country_id.val();
+
+
+
+
+			$.post(base_url + 'person/create', {
+				first_name:fName,
+				last_name:lName,
+				sex:dSex,
+				country_id:dCoun
+			}, function(data, textStatus, xhr) {
+
+				// console.log("success");
+
+				console.log(data);
+				
+			});
 
 		});
 

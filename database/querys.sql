@@ -16,8 +16,9 @@ last_name varchar(30) not null,
 sex enum('male','female') not null,
 country_id int not null,
 created_at date not null,
-updated date not null
+updated_at date not null
 );
+
 
 -- Tabla Countrys
 create table if not exists countrys(
