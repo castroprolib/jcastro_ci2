@@ -26,9 +26,9 @@ class Person extends CI_Controller {
 	{
 		$data['title'] = 'Persons';
 
-		$data = $this->person_model->getPersons();
+		$data['persons'] = $this->person_model->getPersons();
 
-		print_r($data);
+		// print_r($data);
 
 		$this->load->view('persons',$data);
 	}
