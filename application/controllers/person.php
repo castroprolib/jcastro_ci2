@@ -32,5 +32,22 @@ class Person extends CI_Controller {
 
 		$this->load->view('persons',$data);
 	}
+
+	public function create()
+	{
+		
+		print_r($_POST);
+	}
+
+
+	public function getCountrys()
+	{
+
+		$data['countrys'] = $this->person_model->getCountrys();
+		
+		// print_r($_POST);
+
+		echo json_encode($data);
+	}
 }
 

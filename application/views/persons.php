@@ -33,23 +33,36 @@
 
 		<div class="col-12">
 
-		<!-- 	<h4>Persons</h4> -->
+			<!-- 	<h4>Persons</h4> -->
 
 			<a class="btn btn-outline-info" id="add_person">Agregar Persona</a>
 
-			<?php echo form_open() ?>
+			<div class="col-6" id="content_form">
 
-			<input class="form-control" type="text" name="nombre">
-			<br>
+				<?php echo form_open('person/create','id=form') ?>
 
-			<input class="form-control" type="text" name="apellido">
-			<br>
+				<input class="form-control" type="text" name="first_name" id="first_name" placeholder="Ej.Jonathan">
+				<br>
 
-			<input class="form-control" type="number" name="edad">
-			<br>
-			<button class="btn btn-primary" type="submit">enviar</button>
+				<input class="form-control" type="text" name="last_name" id="last_name" placeholder="Ej.Castro">
+				<br>
 
-			<?php echo form_close() ?>
+				<select class="form-control" name="sex" id="sex">
+					<option value="">Ej.Hombre</option>				
+				</select>
+				<br>
+
+				<select class="form-control" name="country_id" id="country_id">
+					<option value="">Ej.Venezuela</option>				
+				</select>
+
+				<br>
+
+				<button class="btn btn-primary" type="submit">enviar</button>
+
+				<?php echo form_close() ?>
+
+			</div>
 
 			<div class="content">
 
@@ -71,11 +84,61 @@
 	<script type="text/javascript">
 		// alert();
 
-		$('#add_person').click(function(event) {
-			
-			// alert(event);
+		const base_url = '<?php echo base_url() ?>';
 
-			// console.log(event);
+		// alert(base_url);
+
+		const country_id = $('#country_id');
+
+
+
+		$.ajax({
+			url: base_url + 'person/getCountrys'			
+		})
+		.done(function(response) {
+			// console.log("success");
+
+			// console.log(response);
+
+			countrys = JSON.parse(response);
+
+			console.log(countrys);
+
+			$.each(countrys, function(index, val) {
+
+				country_id.append('<option value="'+ val.id + '">' + val.country + '</option>');
+
+			});
+
+
+
+		})
+		.fail(function() {
+			console.log("error");
+		});
+
+		
+
+		const form = $('#form');
+
+		const content_form = $('#content_form');
+
+		content_form.hide();
+
+		$('#add_person').click(function() {
+			
+
+			content_form.toggle();			
+			
+		});
+
+		// alert(content_form);
+
+		// console.log(content_form);
+
+		form.submit(function(event) {
+			event.preventDefault();
+
 		});
 
 

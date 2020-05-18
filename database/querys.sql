@@ -68,4 +68,8 @@ values('Argentina'),
 ('Belice'),
 ('Haití');
 
+-- ordenar paises alfabeticamente
+select id,country from jcastro_ci2.countrys
+order by country asc;
+
 
