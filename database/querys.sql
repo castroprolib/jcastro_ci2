@@ -1,3 +1,5 @@
+select version();
+
 CREATE SCHEMA `jcastro_ci2` DEFAULT CHARACTER SET utf8 ;
 
 show databases;
@@ -38,4 +40,32 @@ describe persons;
 describe countrys;
 
 select * from jcastro_ci2.persons;
+
+
+select * from jcastro_ci2.countrys;
+
+
+insert into jcastro_ci2.countrys(country)
+values('Argentina'),
+('Venezuela'),
+('México'),
+('Chile'),
+('Brasil'),
+('República Dominicana'),
+('Costa Rica'),
+('Puerto Rico'),
+('Panamá'),
+('Uruguay'),
+('Ecuador'),
+('Colombia'),
+('Guatemala'),
+('Paraguay'),
+('Perú'),
+('Bolivia'),
+('Cuba'),
+('El Salvador'),
+('Nicaragua'),
+('Belice'),
+('Haití');
+
 
