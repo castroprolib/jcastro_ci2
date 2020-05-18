@@ -43,9 +43,20 @@ class Person extends CI_Controller {
 	public function getCountrys()
 	{
 
-		$data['countrys'] = $this->person_model->getCountrys();
+		$data = $this->person_model->getCountrys();
 		
 		// print_r($_POST);
+
+		echo json_encode($data);
+	}
+
+	public function getSex()
+	{	
+
+		$data = array(
+			'0' => 'male',
+			'1' => 'female'
+			 );
 
 		echo json_encode($data);
 	}

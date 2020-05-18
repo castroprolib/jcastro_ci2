@@ -48,12 +48,12 @@
 				<br>
 
 				<select class="form-control" name="sex" id="sex">
-					<option value="">Ej.Hombre</option>				
+					<option>Ej.Hombre</option>				
 				</select>
 				<br>
 
 				<select class="form-control" name="country_id" id="country_id">
-					<option value="">Ej.Venezuela</option>				
+					<option>Ej.Venezuela</option>				
 				</select>
 
 				<br>
@@ -90,6 +90,8 @@
 
 		const country_id = $('#country_id');
 
+		const sex = $('#sex');
+
 
 
 		$.ajax({
@@ -102,11 +104,13 @@
 
 			countrys = JSON.parse(response);
 
-			console.log(countrys);
+			// console.log(countrys);
 
 			$.each(countrys, function(index, val) {
 
 				country_id.append('<option value="'+ val.id + '">' + val.country + '</option>');
+
+				// console.log(index);
 
 			});
 
@@ -114,7 +118,41 @@
 
 		})
 		.fail(function() {
-			console.log("error");
+			// console.log("error");
+
+			country_id.append('<option>Error al cargar paises </option>');
+
+		});
+
+
+		$.ajax({
+			url: base_url + 'person/getSex'			
+		})
+		.done(function(response) {
+			// console.log("success");
+
+			// console.log(response);
+
+			resp_sex = JSON.parse(response);
+
+			console.log(resp_sex);
+
+			$.each(resp_sex, function(index, val) {
+
+				sex.append('<option value="'+ val + '">' + val + '</option>');
+
+				// console.log(index);
+
+			});
+
+
+
+		})
+		.fail(function() {
+			// console.log("error");
+
+			sex.append('<option>Error al cargar sexo </option>');			 
+
 		});
 
 		
